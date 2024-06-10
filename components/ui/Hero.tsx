@@ -2,6 +2,7 @@
 import Image from "next/image";
 import calculateTotalFees from "@/utils/calculateTotalFees";
 import { useState } from "react";
+import "@/components/ui/Style.css";
 
 export default function Hero() {
   const [pubkey, setPubkey] = useState<string>("");
@@ -27,36 +28,32 @@ export default function Hero() {
   }
   return (
     <main className="flex flex-col justify-center items-center min-h-screen px-4">
-      <h1 className="text-3xl font-bold text-center mb-6">
-        Track Your Solana Gas in the Past 24 Hours
-      </h1>
-      <p className="text-base text-gray-600 text-center mb-6">
-        Uncover your hidden Solana gas charges. Know exactly how much you have
-        spent in the past 24 hours.
-      </p>
+    <h1 className="text-3xl font-bold text- bg-indigo-500  text-center mb-6">
+      Track Your Solana Gas in the Past 24 Hours
+    </h1>
+    <p className="text-base text- bg-indigo-500 bg   text-center mb-6">
+      Uncover your hidden Solana gas charges. Know exactly how much you have spent in the past 24 hours.
+    </p>
+    <div className="input-wrapper">
       <input
         type="text"
         placeholder="Enter your wallet address"
         className="p-2 rounded-2xl border border-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-500 text-black"
         onChange={handleChange}
       />
-      <button
-        className={`inline-block px-4 py-2 rounded-xl font-semibold text-white bg-indigo-500 hover:bg-indigo-600 mt-3`}
-        onClick={handleSearch}
-      >
-        {isLoading ? "Loading..." : "Search"}
-      </button>
+    </div>
+    <button
+      className={`inline-block px-4 py-2 rounded-xl font-semibold text-white bg-indigo-500 hover:bg-indigo-600 mt-3`}
+      onClick={handleSearch}
+    >
+      {isLoading ? "Loading..." : "Search"}
+    </button>
 
-      {estimatedFees !== null && (
-        <p className="text-lg mt-3 text-center text-white font-semibold">
-          Estimated total fees for the past 24 hours: {estimatedFees} SOL
-        </p>
-      )}
-
-      <p className="text-sm text-center text-gray-400 mt-4 font-bold underline">
-        Tool built by{" "}
-        <a href="https://campsite.bio/simplysabir" target="_blank">Sabir Khan</a>
+    {estimatedFees !== null && (
+      <p className="text-lg mt-3 text-center text-white font-semibold">
+        Estimated total fees for the past 24 hours: {estimatedFees} SOL
       </p>
-    </main>
+    )}
+  </main>
   );
 }
